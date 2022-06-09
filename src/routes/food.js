@@ -10,6 +10,7 @@ foodRoute.post("/food", createFood);
 foodRoute.put("/food/:id",validator, updateFood);
 foodRoute.delete("/food/:id",validator, deleteFood);
 
+
 async function getFood(req, res) {
     const allFood = await food.read();
     res.status(200).json(allFood);

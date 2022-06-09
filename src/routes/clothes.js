@@ -4,11 +4,16 @@ const {clothes} = require("../models/index");
 const clothesRoute = express.Router();
 const validator= require('../middleware/validator');
 
+clothesRoute.get("/", home);
 clothesRoute.get("/clothes", getClothes);
 clothesRoute.get("/clothes/:id",validator, getOneClothes);
 clothesRoute.post("/clothes", createClothes);
 clothesRoute.put("/clothes/:id",validator, updateClothes);
 clothesRoute.delete("/clothes/:id",validator, deleteClothes);
+
+function home(req,res){
+    res.send("Welcome to my api-server");
+}
 
 async function getClothes(req, res) {
     let cloth=await clothes.read();
